@@ -1,0 +1,50 @@
+---
+title: "Hotel Recommendations"
+author: "Jonathan Lawrence"
+date: "1/26/2020"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Import data
+```{r load}
+# Random 1% sample (241179 rows)
+df_train_sample <- read.csv("data/train_sample.csv", header = TRUE)
+
+# destination file
+df_dest <- read.csv("data/destinations.csv", header = TRUE)
+```
+
+## Review dataframe - Train
+The data consists of the string variables 'date_time', 'srch_ci', and 'srch_co' which will not be usable by some machine learning algorithms so I'll need to break them apart if I want to use them.
+
+```{r EDA1_train}
+head(df_train_sample)
+```
+
+## Review dataframe - Destinations
+```{r EDA1_dest}
+head(df_dest)
+```
+
+## Review structure - Train
+```{r EDA2_train}
+str(df_train_sample)
+```
+
+## Review structure - Destinations
+```{r EDA2_dest}
+str(df_dest)
+```
+
+## Histogram of 'hotel_cluster'
+```{r histogram}
+hist(df_train_sample$hotel_cluster,
+     main = "Distribution of 'hotel_cluster'",
+     xlab = "Hotel Cluster",
+     col = "lightblue"
+     )
+```
